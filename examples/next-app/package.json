@@ -1,0 +1,27 @@
+{
+  "name": "next-hydration-silencer-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "kill-port 3460 || true && next dev -p 3460",
+    "build": "next build",
+    "start": "next start -p 3460",
+    "test:integration": "pnpm run test:integration:disabled && pnpm run test:integration:enabled",
+    "test:integration:disabled": "pnpm exec kill-port 3460 || true && NEXT_PUBLIC_NEXT_HYDRATION_SILENCER=disabled PORT=3460 playwright test",
+    "test:integration:enabled": "pnpm exec kill-port 3461 || true && NEXT_PUBLIC_NEXT_HYDRATION_SILENCER=enabled PORT=3461 playwright test"
+  },
+  "dependencies": {
+    "next": "16.2.6",
+    "next-hydration-silencer": "workspace:*",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "kill-port": "^2.0.1",
+    "typescript": "^5.9.3"
+  }
+}

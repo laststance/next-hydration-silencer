@@ -1,0 +1,63 @@
+{
+  "name": "next-hydration-silencer",
+  "version": "0.1.0",
+  "description": "Silence known React/Next.js hydration mismatch console noise from Next instrumentation-client.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Laststance.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laststance/next-hydration-silencer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/laststance/next-hydration-silencer/issues"
+  },
+  "homepage": "https://github.com/laststance/next-hydration-silencer#readme",
+  "keywords": [
+    "nextjs",
+    "react",
+    "hydration",
+    "hydration-mismatch",
+    "instrumentation-client"
+  ],
+  "sideEffects": [
+    "./dist/register.js",
+    "./dist/register.cjs"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./register": {
+      "types": "./dist/register.d.ts",
+      "import": "./dist/register.js",
+      "require": "./dist/register.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "pack:dry-run": "pnpm pack --dry-run",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.6"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "packageManager": "pnpm@10.33.4"
+}
