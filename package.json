@@ -7,12 +7,12 @@
   "author": "Laststance.io",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/laststance/next-hydration-silencer.git"
+    "url": "git+https://github.com/ryota-murakami/next-hydration-silencer.git"
   },
   "bugs": {
-    "url": "https://github.com/laststance/next-hydration-silencer/issues"
+    "url": "https://github.com/ryota-murakami/next-hydration-silencer/issues"
   },
-  "homepage": "https://github.com/laststance/next-hydration-silencer#readme",
+  "homepage": "https://github.com/ryota-murakami/next-hydration-silencer#readme",
   "keywords": [
     "nextjs",
     "react",

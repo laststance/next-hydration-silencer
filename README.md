@@ -131,3 +131,18 @@ pnpm pack --dry-run
 
 The `examples/next-app` folder contains a small Next 16 app with an intentional
 hydration mismatch and Playwright checks for enabled/disabled behavior.
+
+## Release
+
+This package publishes from GitHub Actions through npm Trusted Publishing. In
+npm package settings, add this trusted publisher:
+
+- Publisher: GitHub Actions
+- Organization or user: `ryota-murakami`
+- Repository: `next-hydration-silencer`
+- Workflow filename: `release.yml`
+- Environment name: `npm`
+
+Create a GitHub Release whose tag matches `package.json` with a leading `v`,
+for example `v0.2.0`. The workflow verifies the tag, runs package checks, builds
+`dist`, and publishes with OIDC.
