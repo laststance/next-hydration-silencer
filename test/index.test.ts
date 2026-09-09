@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
 import {
   installHydrationSilencer,
@@ -38,7 +38,7 @@ describe('next-hydration-silencer', () => {
     }
   })
 
-  it('suppresses React 19 attribute hydration mismatch output', () => {
+  test('suppresses React 19 attribute hydration mismatch output', () => {
     installHydrationSilencer({ enabled: true })
 
     console.error(
@@ -50,7 +50,7 @@ describe('next-hydration-silencer', () => {
     expect(errorSpy).not.toHaveBeenCalled()
   })
 
-  it("suppresses React 19 server rendered HTML didn't match output", () => {
+  test("suppresses React 19 server rendered HTML didn't match output", () => {
     installHydrationSilencer({ enabled: true })
 
     console.error(
@@ -62,7 +62,7 @@ describe('next-hydration-silencer', () => {
     expect(errorSpy).not.toHaveBeenCalled()
   })
 
-  it('preserves unrelated console.error, console.warn, and custom app logs', () => {
+  test('preserves unrelated console.error, console.warn, and custom app logs', () => {
     installHydrationSilencer({ enabled: true })
 
     console.error('unrelated application error', { feature: 'billing' })
@@ -76,7 +76,7 @@ describe('next-hydration-silencer', () => {
     expect(warnSpy).toHaveBeenCalledWith('unrelated application warning', 42)
   })
 
-  it('does not catch or change thrown errors', () => {
+  test('does not catch or change thrown errors', () => {
     installHydrationSilencer({ enabled: true })
 
     expect(() => {
@@ -85,7 +85,7 @@ describe('next-hydration-silencer', () => {
     expect(errorSpy).not.toHaveBeenCalled()
   })
 
-  it('installs idempotently and restores the original console methods', () => {
+  test('installs idempotently and restores the original console methods', () => {
     installHydrationSilencer({ enabled: true })
     const firstErrorWrapper = console.error
     const firstWarnWrapper = console.warn
@@ -101,7 +101,7 @@ describe('next-hydration-silencer', () => {
     expect(console.warn).toBe(warnSpy)
   })
 
-  it('supports additional custom patterns and onSuppressed observers', () => {
+  test('supports additional custom patterns and onSuppressed observers', () => {
     const onSuppressed = vi.fn()
 
     installHydrationSilencer({
@@ -124,7 +124,7 @@ describe('next-hydration-silencer', () => {
     })
   })
 
-  it('uses development as the default enabled environment', () => {
+  test('uses development as the default enabled environment', () => {
     process.env.NODE_ENV = 'development'
 
     installHydrationSilencer()
@@ -133,7 +133,7 @@ describe('next-hydration-silencer', () => {
     expect(errorSpy).not.toHaveBeenCalled()
   })
 
-  it('supports production opt-in through NEXT_PUBLIC_NEXT_HYDRATION_SILENCER', () => {
+  test('supports production opt-in through NEXT_PUBLIC_NEXT_HYDRATION_SILENCER', () => {
     process.env.NODE_ENV = 'production'
     process.env.NEXT_PUBLIC_NEXT_HYDRATION_SILENCER = 'enabled'
 
@@ -143,7 +143,7 @@ describe('next-hydration-silencer', () => {
     expect(warnSpy).not.toHaveBeenCalled()
   })
 
-  it('supports explicit environment disablement', () => {
+  test('supports explicit environment disablement', () => {
     process.env.NODE_ENV = 'development'
     process.env.NEXT_PUBLIC_NEXT_HYDRATION_SILENCER = 'disabled'
 
@@ -153,7 +153,7 @@ describe('next-hydration-silencer', () => {
     expect(errorSpy).toHaveBeenCalledTimes(1)
   })
 
-  it('reports observer failures through the original console.error', () => {
+  test('reports observer failures through the original console.error', () => {
     installHydrationSilencer({
       enabled: true,
       onSuppressed: () => {
