@@ -11,17 +11,17 @@
     "test:integration:enabled": "pnpm exec kill-port 3461 || true && NEXT_PUBLIC_NEXT_HYDRATION_SILENCER=enabled PORT=3461 playwright test"
   },
   "dependencies": {
-    "next": "16.2.6",
+    "next": "16.4.6",
     "next-hydration-silencer": "workspace:*",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
-    "@types/node": "^24.10.1",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "kill-port": "^2.0.1",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   }
 }
